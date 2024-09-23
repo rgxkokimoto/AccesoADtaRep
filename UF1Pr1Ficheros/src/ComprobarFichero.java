@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class comprobarFichero {
+public class ComprobarFichero {
 
 	public static void main(String[] args) {
 		// Establecer ruta del directorio 
