@@ -69,7 +69,7 @@ public class GestionClientes {
 		for (Cliente cliente : listaClientes) {
 			System.out.println(cliente);
 	    }
-		
+		listaClientes.clear();// limpia la lista para que no existan duplicados. 
 	}
 
 	private static void aniadirCliente() {
@@ -112,7 +112,6 @@ public class GestionClientes {
 		}
 	}
 	
-
 	private static void cargarClientesTexto() {
 
     File file = new File("cliente.txt");
@@ -137,7 +136,5 @@ public class GestionClientes {
         e.printStackTrace();
     }
 }
-
-
 
 }
