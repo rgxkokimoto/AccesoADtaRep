@@ -89,11 +89,10 @@ public class GestionClientes {
 		
 		// asociando las embajadoras al pojo 
 		Cliente cliente = new Cliente(nom, apll, email, dir, fechA, prov, ciu);
-		//listaClientes.add(cliente); // TODO Jorge si lo vamos a guardar mas tarde en el metodo cargarClientesTexto
-		// esto no va a crear duplicados?
-		System.out.println("Cliente añadido: ");
-		
+				
 		guardarCliente(cliente); // guarda el cliente en el fichero 
+		System.out.println("Cliente añadido: ");
+
 	}
 
 	private static void guardarCliente(Cliente cliente) {
