@@ -13,15 +13,16 @@ import pojo.Cliente;
 
 public class GestionClientes {
 	
-	private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>(); // 
-	private static Scanner scn = new Scanner(System.in); //
+	private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>(); 
+	private static Scanner scn = new Scanner(System.in); 
 
 	public static void main(String[] args) {
 		
 		// TODO Añade un bucle while para presentar el menú con las opciones: Añadir cliente, Ver clientes, Guardar en texto, Salir.
 		
 		// MENU ------
-		boolean exit = false;
+		boolean exit = false; // variable para controlar el menu y matarlo 
+		// cargarClientesTexto(); // metodo de jorge
 		
 		while (!exit) {
 			
@@ -42,7 +43,8 @@ public class GestionClientes {
 				break;
 			
 			case 3:
-				exit = true;
+				exit = true; // el propio caso desestabiliza el bucle 
+				System.out.println("Saliendo del programa");
 				break;
 
 			default:
@@ -55,10 +57,6 @@ public class GestionClientes {
 		scn.close(); // Para cerrar el Scanner
 		//End.-----------
 	}
-
-	
-			
-	
 
 	private static void verCliente() {
 		cargarClientesTexto();
@@ -73,26 +71,29 @@ public class GestionClientes {
 	}
 
 	private static void aniadirCliente() {
-		System.out.println("Nombre: ");
+		// pidiendo datos indiviudales al usario y asignandoselo a las variables embajadoras
+		System.out.print("Nombre: ");
 		String nom = scn.nextLine();
-		System.out.println("Apellido: ");
+		System.out.print("Apellido: ");
 		String apll = scn.nextLine();
-		System.out.println("Email: ");
+		System.out.print("Email: ");
 		String email = scn.nextLine();
-		System.out.println("Dirección: ");
+		System.out.print("Dirección: ");
 		String dir = scn.nextLine();
-		System.out.println("Fecha Alta: ");
+		System.out.print("Fecha Alta: ");
 		String fechA= scn.nextLine();
-		System.out.println("Provincia: ");
+		System.out.print("Provincia: ");
 		String prov = scn.nextLine();
-		System.out.println("Ciudad: ");
+		System.out.print("Ciudad: ");
 		String ciu = scn.nextLine();
 		
+		// asociando las embajadoras al pojo 
 		Cliente cliente = new Cliente(nom, apll, email, dir, fechA, prov, ciu);
 		//listaClientes.add(cliente); // TODO Jorge si lo vamos a guardar mas tarde en el metodo cargarClientesTexto
 		// esto no va a crear duplicados?
 		System.out.println("Cliente añadido: ");
-		guardarCliente(cliente);
+		
+		guardarCliente(cliente); // guarda el cliente en el fichero 
 	}
 
 	private static void guardarCliente(Cliente cliente) {
@@ -101,12 +102,16 @@ public class GestionClientes {
 		try(BufferedWriter writeCli = new BufferedWriter(new FileWriter("cliente.txt",true)) ) {  
 			// escribe en el archivo que le indique si no exite lo crea
 			// no va a crear nuevos archivos una vez exita depende del segundo parametro si sobre escribe oh añade info.
-			writeCli.write(cliente.getNombre() + "," + cliente.getApellido() 
-			+ "," + cliente.getEmail() + "," + cliente.getDireccion() 
-			+ "," + cliente.getFechaAlta() + "," + cliente.getProvincia() 
+			writeCli.write(
+			cliente.getNombre() 
+			+ "," + cliente.getApellido() 
+			+ "," + cliente.getEmail() 
+			+ "," + cliente.getDireccion() 
+			+ "," + cliente.getFechaAlta() 
+			+ "," + cliente.getProvincia() 
 			+ "," + cliente.getCiudad());
-			writeCli.newLine();// importante para que no se junten 2 clientes en una misma línea
-			
+			writeCli.newLine();// importante para que no se junten 2 clientes en una misma línea esto afectaria a la carga posterior
+			System.out.println("El cliente ha sido guardado en el archivo de texto");
 		} catch (IOException e) {
 			System.out.println("Hubo un error al guardar al cliente en el archivo de texto");
 		}
@@ -123,7 +128,7 @@ public class GestionClientes {
 
     try (BufferedReader reader = new BufferedReader(new FileReader("cliente.txt"))) {
         String linea;
-        while ((linea = reader.readLine()) != null) {
+        while ((linea = reader.readLine()) != null) { // mientras existan lineas sigue leyendo 
             String[] dato = linea.split(","); // cada cliente puede verse como un array divisible de forma secuencial
             Cliente cliente = new Cliente(dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6]); 
             // al fragmentarel texto plano del txt hacemos que estos datos vuelvan a ser atributos de la clase cliente
