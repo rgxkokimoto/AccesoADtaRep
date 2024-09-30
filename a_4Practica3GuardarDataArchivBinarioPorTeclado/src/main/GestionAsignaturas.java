@@ -17,8 +17,11 @@ public class GestionAsignaturas {
 	private static Scanner sc = new Scanner(System.in);
 	private static ArrayList<Asignaturas> listaAsignaturas = new ArrayList<Asignaturas>();
 	
-	
 	public static void main(String[] args) {
+		
+		// este código esta mal ya que debido a ciertos problemas con el ObjectStream
+		// no permite una cantidad infinita de objetos posibles para guardar debes seleconar un numero 
+		// jorge lo tiene corregido en su repositorio
 		
 		// menu 
 		boolean exit = false;
@@ -122,6 +125,8 @@ public class GestionAsignaturas {
 	}
 
 	private static void aniadirAsignatura() {
+		//
+		System.out.println("Cuantas Asignaturas hay por persona?");
 		
 		// pedimos los datos al usuario
 		System.out.print("Introduzca el código de la asignatura: ");
@@ -131,7 +136,7 @@ public class GestionAsignaturas {
 		System.out.print("Introduzca el nombre del profesor: ");
 		String profesor = sc.nextLine();
 		System.out.print("Introduzca el número de horas: ");
-		int numHoras = Integer.parseInt(sc.nextLine());
+		int numHoras = Integer.parseInt(sc.nextLine()); // Practicas de Gentelman ;)
 		
 		// Ahora vamos a guardar los datos en un objeto
 		Asignaturas asignatura = new Asignaturas(code, nombre, profesor, numHoras);
@@ -140,8 +145,7 @@ public class GestionAsignaturas {
 		cargarObjEnFichBin(asignatura);
 		
 		System.out.println("\nAsignatura Guardada");
-		
-		
+				
 	}
 
 	private static void cargarObjEnFichBin(Asignaturas asignatura) {

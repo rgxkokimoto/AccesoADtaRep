@@ -2,12 +2,13 @@ package pojo;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable{ 
+	// UNA CLASE SERIALIZABLE puede tener objetos trancribibles a archivos binarios
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; // estas deben tener un id 
 	
 	private String nombre;
 	private String apellido;
