@@ -7,6 +7,8 @@ import java.io.RandomAccessFile;
 public class LeerFicheroBinarioRandom {
 
 	public static void main(String[] args) {
+		
+		//TODO HAY COSAS RARAS MIRA EL REPOSITORIO DE JORGE 
 		String rutaarchivo = "Fichero/ejemplo.bin";
 		
 		try(RandomAccessFile archivo = new RandomAccessFile(rutaarchivo, "r")) { // solo el permiso de leer
@@ -14,8 +16,13 @@ public class LeerFicheroBinarioRandom {
 			archivo.seek(0); // cuando escribes el puntero se mantiene donde esta acuardate de limpiarlo
 			
 			//Leer la cadena escrita antes con writeUTF()
-			String textoLeido = archivo.readUTF();
-			System.out.println("Texto leido: " + textoLeido);
+			char carLed;
+			String cadenaLeida="";
+			for (int i = 0; i < 30; i++) {
+				carLed = archivo.readChar();
+				cadenaLeida += carLed;
+				}
+			System.out.println("Texto leido: " + cadenaLeida);
 			
 			// Leer el valor entero puesto anterormente en la clase EscribirFicheroBinarioRandom
 			int numeroEntero = archivo.readInt();
