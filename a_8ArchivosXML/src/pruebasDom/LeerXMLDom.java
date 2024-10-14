@@ -39,17 +39,17 @@ public class LeerXMLDom {
 				Element element = (Element) empleado;
 				
 				// Obtengo los valores da cada campo del elemento empleado
-				String id = element.getElementsByTagName("id").item(0).getTextContent();
+				String id = element.getElementsByTagName("id").item(0).getTextContent().trim(); // recuerda usar trim
 				
-				String nombre = element.getElementsByTagName("nombre").item(0).getTextContent();
+				String nombre = element.getElementsByTagName("nombre").item(0).getTextContent().trim();
 				
-				String apellido = element.getElementsByTagName("apellido").item(0).getTextContent();
+				String apellido = element.getElementsByTagName("apellido").item(0).getTextContent().trim();
 				
 				// imprimimos sus datos
 				System.out.println("Empleado id: "  + id);
 				System.out.println("Empleado nombre: "  + nombre);
 				System.out.println("Empleado apellido: "  + apellido);
-				System.out.println("----");
+				System.out.println("----------------------------------");
 
 			}
 			
