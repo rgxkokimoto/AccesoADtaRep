@@ -17,11 +17,14 @@ public class leerLineasPedidosObj {
 			
 			boolean corr = false;
 			
-			while (!corr) {
-				
-				// TODO pillar el de jorge en el repositorio 
-				
-			}
+			 while (!corr) {
+	                try {
+	                    LineaProducto lineaPedido = (LineaProducto) ois.readObject(); // Hacer casting explícito y leer cada objeto LineaPedido
+	                    System.out.println(lineaPedido); // Mostrar por pantalla
+	                } catch (IOException | ClassNotFoundException e) {
+	                    corr = true; // Salir del bucle cuando se termine de leer el archivo
+	                }
+	         }
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encontro el fichero clientes.dat");

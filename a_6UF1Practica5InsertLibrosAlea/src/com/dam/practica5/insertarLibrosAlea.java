@@ -39,7 +39,7 @@ public class insertarLibrosAlea {
 				System.out.println("Escoja un opción:"); 
 				System.out.println("\n1. Añadir libro");
 				System.out.println("2. Ver libros");				
-				System.out.println("2. Salir\n");
+				System.out.println("3. Salir\n");
 				System.out.print("User: ");
 				opc = sc.nextLine();
 				
@@ -48,10 +48,11 @@ public class insertarLibrosAlea {
 					addBook(raf);
 					break;
 				case "2":
-					// TODO readListBooks
+					readListBooks(raf);
 					break;
 				case "3":
 					end = true;
+					raf.close();
 					break;
 				default:
 					System.out.println("Introduzca un dato correcto :(");
@@ -65,6 +66,39 @@ public class insertarLibrosAlea {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+	}
+
+	private static void readListBooks(RandomAccessFile raf) throws IOException , FileNotFoundException {
+		
+		raf.seek(0);
+		
+		int id;
+		char cTitulo [] = new char [TAM_TITULO]; 
+		String titulo;
+		char cAutor [] = new char [TAM_AUTOR];
+		String autor;
+		int ano;
+		int numPage;
+		
+		while (raf.getFilePointer() < raf.length()) {
+			
+			id = raf.readInt();
+			for (int i = 0; i < cTitulo.length; i++) {
+				cTitulo[i] = raf.readChar();
+			}
+			titulo = new String(cTitulo).trim(); // TODO ESTO FUNCIONARA?
+			for (int i = 0; i < cAutor.length; i++) {
+				cAutor[i] = raf.readChar();
+			}
+			autor = new String(cAutor).trim();
+			ano = raf.readInt();
+			numPage = raf.readInt();
+			
+			System.out.println("id: " + id + ", titulo: " + titulo + ", autor: " + autor + ", año: "
+					+  ano + ", Número de página: " + numPage);
+			
 		}
 		
 	}
@@ -84,7 +118,7 @@ public class insertarLibrosAlea {
 		sbt.setLength(TAM_TITULO);
 		raf.writeChars(sbt.toString()); // se supone que funciona mejor que writeUTC
 		
-		System.out.print("Introduzca el titulo del autor: max 20 caracteres");
+		System.out.print("Introduzca el nombre del autor: max 20 caracteres");
 		String autor = sc.nextLine();
 		StringBuffer sba = new StringBuffer(autor);
 		sba.setLength(TAM_AUTOR);
@@ -122,7 +156,7 @@ public class insertarLibrosAlea {
 		int posActIds;
 		raf.seek(raf.length() - TAM_REGnormal);// Posicionando detras de ultima edición para descubrir ultimo id
 		int ult_id = raf.readInt(); // capturar id de último fichero
-		posActIds = ult_id ++;
+		posActIds = ult_id + 1;
 		
 		return posActIds;
 	}

@@ -13,7 +13,7 @@ public class LeerFicheroSecuencial {
 			// creamos un objeto para leer 
 			BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo));
 			
-			//3º creo el string que alacenara una linea por cada registro
+			//3º creo el string que almacenara una linea por cada registro
 			String linea;
 			//4º itera cada lectura con un bucle
 			while ((linea = lector.readLine()) != null) { // cuando dejan de exitir las lineas para

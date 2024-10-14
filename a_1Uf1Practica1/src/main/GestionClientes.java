@@ -127,7 +127,7 @@ public class GestionClientes {
 
     try (BufferedReader reader = new BufferedReader(new FileReader("cliente.txt"))) {
         String linea;
-        while ((linea = reader.readLine()) != null) { // mientras existan lineas sigue leyendo 
+        while ((linea = reader.readLine()) != null) { // mientras que existan lineas que seguir leyendo 
             String[] dato = linea.split(","); // cada cliente puede verse como un array divisible de forma secuencial
             Cliente cliente = new Cliente(dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6]); 
             // al fragmentarel texto plano del txt hacemos que estos datos vuelvan a ser atributos de la clase cliente
