@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Empleados>
+    <empleado>
+        <id>1</id>
+        <nombre>Manuel</nombre>
+        <apellido>Azaña</apellido>
+        <direcion>
+            <calle>Calle Alboran 12</calle>
+            <ciudad>El Berrueco</ciudad>
+            <provincia>Madrid</provincia>
+            <cPostal>28001</cPostal>
+        </direcion>
+    </empleado>
+    <empleado>
+        <id>2</id>
+        <nombre>Miguel</nombre>
+        <apellido>Cervantes</apellido>
+        <direcion>
+            <calle>Calle Bonachon 23</calle>
+            <ciudad>Barcelona</ciudad>
+            <provincia>Cataluña</provincia>
+            <cPostal>68001</cPostal>
+        </direcion>
+    </empleado>
+    <empleado>
+        <id>3</id>
+        <nombre>Pablo</nombre>
+        <apellido>Neruda</apellido>
+        <direcion>
+            <calle>Calle Cañaveral 35</calle>
+            <ciudad>Valencia</ciudad>
+            <provincia>Valencia</provincia>
+            <cPostal>46001</cPostal>
+        </direcion>
+    </empleado>
+</Empleados>

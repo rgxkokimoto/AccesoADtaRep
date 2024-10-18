@@ -29,7 +29,7 @@ public class InsertLineaPedidoObj {
 		//Crea las líneas de pedidos con diferentes datos 
 		
 		// tambien se podia hacer así
-		LineaProducto [] arraylineasProducts = new LineaProducto[5];
+		//LineaProducto [] arraylineasProducts = new LineaProducto[5];
 		
 		//LineaProducto[0] new LineaProducto(1, listPorducts.get(0), 4, 0, "12/03/2023")
 		//LineaProducto[1] new LineaProducto(1, listPorducts.get(0), 4, 0, "12/03/2023");

@@ -25,6 +25,8 @@ public class leerLineasPedidosObj {
 	                    corr = true; // Salir del bucle cuando se termine de leer el archivo
 	                }
 	         }
+			 
+			 ois.close();
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encontro el fichero clientes.dat");
