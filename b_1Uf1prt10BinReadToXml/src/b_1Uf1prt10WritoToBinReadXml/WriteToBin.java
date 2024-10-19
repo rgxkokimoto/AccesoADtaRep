@@ -23,11 +23,13 @@ public class WriteToBin {
 //		Aquí creamos un archivo binario llamado empleadosObj.dat que almacena la información de los empleados.
 		
 		try {
-			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("empleadosObj.dat"));
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Ficheros/empleadosObj.dat"));
 			
 			for (Empleado emp : listAEmple) {
 				oos.writeObject(emp);
 			}
+			
+			oos.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
