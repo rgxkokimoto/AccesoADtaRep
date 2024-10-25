@@ -25,7 +25,7 @@ public class LeerXMLStream {
 				xs.allowTypes(clas);
 				
 				// permitir cualquier tipo procedente del mismo paquite
-				xs.allowTypesByWildcard(new String[] { "b_3PruebasXstream.*" }); //TODO meter los paquetes en paquete vacio y actaulizar ruta
+				xs.allowTypesByWildcard(new String[] { "b_3PruebasXstream.*" }); // 
 				
 				// las etiquetas XML se corresponden con el nombre de los atributos de la clase, aunque se podrian cambiar
 				// usando el metodo Alias
