@@ -28,29 +28,7 @@ public class ReadToXml {
 //		Paso 3: Leer el archivo binario
 //		A modo de comprobación, leemos el archivo binario empleadosObj.dat y obtenemos la lista de empleados para generar el XML.
 		
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros/empleadosObj.dat"));
-			
-			boolean have = true;
-			Empleado empleLine;
-			listEmple = new ArrayList<Empleado>(); 
-			
-			while (have) {
-				try {
-					empleLine = (Empleado) ois.readObject();
-					listEmple.add(empleLine);
-				} catch (IOException | ClassNotFoundException e) {
-					have = false;
-				}
-			}
-			
-			ois.close();
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		leerArchivoBinario();
 		
 		//Paso 4: Generar el archivo XML con DOM, desde el archivo binario.
 		
@@ -67,7 +45,7 @@ public class ReadToXml {
 			
 			// usamos un forech de tipo empleado para 
 			
-// Después de leer los empleados desde el archivo binario, usamos DOM para generar un archivo XML con la estructura proporcionada.
+			// Después de leer los empleados desde el archivo binario, usamos DOM para generar un archivo XML con la estructura proporcionada.
 
 			
 			for (Empleado emple : listEmple) {
@@ -126,6 +104,32 @@ public class ReadToXml {
 
   
 
+	}
+
+	public static void leerArchivoBinario() {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros/empleadosObj.dat"));
+			
+			boolean have = true;
+			Empleado empleLine;
+			listEmple = new ArrayList<Empleado>(); 
+			
+			while (have) {
+				try {
+					empleLine = (Empleado) ois.readObject();
+					listEmple.add(empleLine); // atmbien añadimos cada lectura a un array
+				} catch (IOException | ClassNotFoundException e) {
+					have = false;
+				}
+			}
+			
+			ois.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

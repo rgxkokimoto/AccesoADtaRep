@@ -12,8 +12,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-
-
 /*
  * El otro dia hablando con axel me di cuenta de que encapsular las la lógica en metodos 
  * ayuda a depurar el código ya que la pila de errores es mucho mas exacta 
@@ -48,38 +46,34 @@ public class LeerXMLSax {
 			InputSource archivoXML = new InputSource("Ficheros/empleados.xml"); 
 			
 			imprimirEnConsola(procXmlReader, archivoXML);
-			
 			imprimirEnXml(procXmlReader, archivoXML);
 			
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public static void imprimirEnConsola(XMLReader procXmlReader, InputSource archivoXML) throws SAXException {
+	public static void imprimirEnConsola(XMLReader procXmlReader, InputSource archivoXML){
 		// 1. PROCESAR E IMPRIMIR archivo xml en CONSOLA
 		try {
 			System.out.println("-----------");
 			procXmlReader.parse(archivoXML);
 			System.out.println("-----------");
-		} catch (IOException e) {
+		} catch (IOException | SAXException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void imprimirEnXml(XMLReader procXmlReader, InputSource archivoXML) throws SAXException {
+	public static void imprimirEnXml(XMLReader procXmlReader, InputSource archivoXML){
 		// 2 PROCESAR e IMPRIMIR  contenido XML en archivo XML 
 		try {
 			PrintStream fileOut = new PrintStream(new FileOutputStream("Ficheros/empleados_generado_con_sax.xml"));
 			System.setOut(fileOut);
 			procXmlReader.parse(archivoXML);
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException | SAXException e) {
 			e.printStackTrace();
 		}
 	}
