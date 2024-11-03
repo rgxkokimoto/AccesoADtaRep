@@ -11,14 +11,11 @@ public class GestionContenido extends DefaultHandler {
 //	  @Override
 //	  public void startDocument() throws SAXException {
 //	  System.out.println("ha comenzado la lectura del documento"); }
-	
   
 	  @Override
 	  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 	      System.out.println("<" + qName + ">");
 	  }
-	  
-	  // 
 	
 	  @Override
 	  public void characters(char[] ch, int start, int length) throws SAXException {

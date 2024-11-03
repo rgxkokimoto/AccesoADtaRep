@@ -6,7 +6,10 @@ import java.util.List;
 
 public class ListaObjetos implements Serializable {
 	
-	private static final long SERIAL_VERSION_HD = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	//
 	private List<Objeto> listaObjetos;

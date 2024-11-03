@@ -39,31 +39,10 @@ public class GenerarArchivoBinarioEmpleadoXStream {
 
 	private static void DesdeBinarioToXml() {
 		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ficheros/empleadosObj.dat"))) {
-			
+
 			ListaEmpleados listaEmpleados = (ListaEmpleados) ois.readObject();
-			
 			// Creamos la instancea de xstream
-			
-			XStream xs = new XStream();
-			
-			// 2 Configurar los permisos básicos  de seguridad
-			xs.addPermission(NoTypePermission.NONE);
-			xs.addPermission(NullPermission.NULL);
-			xs.addPermission(PrimitiveTypePermission.PRIMITIVES);
-			
-			Class[] clas = {ListaEmpleados.class, Empleado.class};
-			xs.allowTypes(clas);
-			
-			// permitir cualquier tipo procedente del mismo paquite
-			xs.allowTypesByWildcard(new String[] { "dam.ad.practica11" }); // 
-			
-			xs.alias("Empleados", ListaEmpleados.class);
-			xs.alias("empleado", Empleado.class); // a cada elemento
-			
-			xs.addImplicitCollection(ListaEmpleados.class, "listaEmpleados");
-			
-			FileOutputStream fos = new FileOutputStream("Ficheros/empleadosXStream.xml");
-			xs.toXML(listaEmpleados,fos);
+			leerArchivoXML(listaEmpleados);
 			
 			
 		} catch (FileNotFoundException e) {
@@ -77,6 +56,49 @@ public class GenerarArchivoBinarioEmpleadoXStream {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public static void leerArchivoXML(ListaEmpleados listaEmpleados) throws FileNotFoundException {
+		XStream xs = new XStream();
+		
+		// 2 Configurar los permisos básicos  de seguridad
+		xs.addPermission(NoTypePermission.NONE);
+		xs.addPermission(NullPermission.NULL);
+		xs.addPermission(PrimitiveTypePermission.PRIMITIVES);
+		
+		Class[] clas = {ListaEmpleados.class, Empleado.class};
+		xs.allowTypes(clas);
+		
+		// permitir cualquier tipo procedente del mismo paquite
+		xs.allowTypesByWildcard(new String[] { "dam.ad.practica11" }); // 
+		
+		xs.alias("Empleados", ListaEmpleados.class);
+		xs.alias("empleado", Empleado.class); // a cada elemento
+		
+		xs.addImplicitCollection(ListaEmpleados.class, "listaEmpleados");
+		
+		FileOutputStream fos = new FileOutputStream("Ficheros/empleadosXStream.xml");
+		xs.toXML(listaEmpleados,fos);
+		
+		imprimirObjetosDeXml(listaEmpleados);
+		
+	}
+
+	public static void imprimirObjetosDeXml(ListaEmpleados listaEmpleados) {
+		try {
+			FileInputStream fis = new FileInputStream("Ficheros/empleadosXStream.xml");
+			
+			for (Empleado emp : listaEmpleados.getListaEmpleados()) {
+				System.out.println("Id: " + emp.getId());
+				System.out.println("Nombre: " + emp.getNombre());
+				System.out.println("Departamento: " + emp.getDepartamento());
+				System.out.println("Salario: " + emp.getSalario());
+				System.out.println("=================================================================");
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error en la zona de impresión");
+		}
 	}
 
 	private static void  crearArchivoBinario(ListaEmpleados le) {

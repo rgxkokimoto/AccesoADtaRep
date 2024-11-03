@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Usuario/Desktop/cosasAD/kxml2-2.3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Usuario/Desktop/cosasAD/xstream-1.4.20.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/Mi espacio/Acceso a datos/libreriaParaXstream/kxml2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/Mi espacio/Acceso a datos/libreriaParaXstream/xstream-1.4.20.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
