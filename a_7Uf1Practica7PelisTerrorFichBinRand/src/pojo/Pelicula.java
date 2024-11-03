@@ -1,13 +1,6 @@
 package pojo;
 
-import java.io.Serializable;
-
-public class Pelicula implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Pelicula {
 	
 	private int id; 
 	private String titulo;
@@ -17,7 +10,6 @@ public class Pelicula implements Serializable{
 	private String sinopsis;
 	
 	public Pelicula(int id, String titulo, int ano, int duracion, String director, String sinopsis) {
-		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;

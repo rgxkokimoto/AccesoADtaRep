@@ -95,10 +95,12 @@ public class EscribirYLeerPelisTerror {
 			for (int i = 0; i < cDirector.length; i++) {
 				cDirector[i] = raf.readChar();
 			}
+			
 			director = new String(cDirector).trim();
 			for (int i = 0; i < cSinopsis.length; i++) {
 				cSinopsis[i] = raf.readChar();
 			}
+			
 			sinopsis = new String(cSinopsis).trim();
 			
 			System.out.println("id: " +  id + "titulo: " + titulo + ", año: " + ano + ", duración: " + duracion + ", director: " + director
@@ -153,13 +155,13 @@ public class EscribirYLeerPelisTerror {
 			//iniciar variables necesarias
 			String line;// para leer cada línea del pelis_terror.txt
 			String [] peliDisec; // para fragmentar las lineas en atributos
-			int id = posActIds; // para llavar un conteo del id
+			int id = posActIds; // para llevar un conteo del id
 			Pelicula peli; // para crear el objeto y guardarlo en un arrayList
 			
 			while ((line = read.readLine()) != null) { // sigo sin enender exta extructura dentro de la condición hay una acción
 				peliDisec = line.split("-");
 				
-				// TODO convertir datos Aqui se podria controlar el tipo de datos que veienen del fichero y porner medidas en caso de que no fueran correctos
+				// TODO convertir datos Aqui se podria controlar el tipo de datos que vienen del fichero y porner medidas en caso de que no fueran correctos
 				int ano = Integer.parseInt(peliDisec[1]);
 				int duraccion = Integer.parseInt(peliDisec[2]);
 				id ++;
@@ -172,7 +174,5 @@ public class EscribirYLeerPelisTerror {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
-
 }
